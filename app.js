@@ -22,7 +22,7 @@ app.post("/shorten",async(req,res)=>{
     if(!check)
     {
         await urls.insertOne(req.body)
-         const shortUrl = `http://localhost:3000/${req.body.shortCode}`;
+        const shortUrl = `${req.protocol}://${req.get("host")}/${req.body.shortCode}`;
 
     res.json({
         message: "Short URL created!",
